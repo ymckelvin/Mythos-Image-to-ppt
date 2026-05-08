@@ -1,0 +1,37 @@
+{
+  "text_wrong_or_modified": {
+    "priority": "critical",
+    "route_to": "TypographyAgent",
+    "repair_actions": ["restore_original_text_from_ocr", "lock_text_content", "disable_ai_rewrite"]
+  },
+  "text_missing": {
+    "priority": "critical",
+    "route_to": "VisionParseAgent",
+    "repair_actions": ["re_detect_text_regions", "compare_ocr_with_layout_json", "add_missing_textbox"]
+  },
+  "text_not_editable": {
+    "priority": "critical",
+    "route_to": "PPTCompilerAgent",
+    "repair_actions": ["convert_raster_text_to_textbox", "separate_text_from_background", "rebuild_text_layer"]
+  },
+  "card_broken_apart": {
+    "priority": "critical",
+    "route_to": "LayoutAgent",
+    "repair_actions": ["regroup_card_elements", "restore_card_container", "rebuild_parent_child_relationships"]
+  },
+  "layout_drift": {
+    "priority": "high",
+    "route_to": "LayoutAgent",
+    "repair_actions": ["compare_bounds_with_source", "snap_to_source_position", "normalize_spacing"]
+  },
+  "asset_blurry": {
+    "priority": "high",
+    "route_to": "AssetExtractAgent",
+    "repair_actions": ["re_export_asset_at_2k_or_higher", "avoid_repeated_compression", "replace_with_original_crop"]
+  },
+  "low_overall_similarity": {
+    "priority": "high",
+    "route_to": "RepairAgent",
+    "repair_actions": ["inspect_visual_diff_report", "route_to_dominant_issue_agent", "rebuild_and_rerender"]
+  }
+}
